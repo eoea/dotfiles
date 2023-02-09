@@ -1,0 +1,92 @@
+" Basics
+syntax on 
+set nocompatible
+set path+=** " search directories recursively for a file
+filetype plugin on " for file specific config
+filetype plugin indent on
+set encoding=utf-8
+scriptencoding utf-8
+
+" Quality of life
+set number relativenumber
+set textwidth=80
+set wildmenu
+set wildmode=longest:full,full
+set hlsearch
+set ruler
+set nostartofline
+set ignorecase
+set smartcase
+
+" Usability options
+set clipboard= 
+set noerrorbells
+set nowrap
+set nobackup
+set nowritebackup
+set viminfo='20,<1000,s1000 
+set splitbelow splitright
+set mouse=a
+set undodir=~/.vim/undodir
+set confirm
+
+" Indentation, general indentation. Please check file specific indentation in
+" ~/vim/ftplugin
+set tabstop=8
+set softtabstop=4
+set shiftwidth=4
+set noexpandtab
+set smarttab
+set smartindent
+set autoindent
+
+" Auto parenthesis, brackets, braces 
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
+" Custom Commands Clear Vim Registry
+command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
+
+" Digraphs Overwrite Subscripts
+" for: (ₙ),(ᵢ),(ⱼ),(ₖ)
+execute "digraphs ns " . 0x2099         
+execute "digraphs is " . 0x1D62         
+execute "digraphs js " . 0x2C7C         
+execute "digraphs ks " . 0x2096         
+" Digraphs Overwrite Superscripts
+" for: (ⁿ),(ⁱ),(ʲ),(ᵏ)
+execute "digraphs nS " . 0x207f         
+execute "digraphs iS " . 0x2071         
+execute "digraphs jS " . 0x02b2         
+execute "digraphs kS " . 0x1d4f         
+
+" Vim Plug Minimalist Vim plugin Manager
+" Instructions  
+" https://github.com/junegunn/vim-plug
+" Usage add in new plug <url> then save vimrc, then do :PlugInstall 
+" Specify a directory for plugins like plugged, don't use name plugin
+" To delete the plugin, comment out the Plug below, then run :PlugClean
+" To update the plugin, run :PlugUpdate
+call plug#begin('~/.vim/plugged')
+Plug 'https://github.com/sheerun/vim-polyglot'
+Plug 'https://github.com/tek256/simple-dark'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+call plug#end()
+
+" For Simple-dark, focus mode
+colorscheme simple-dark-transparent
+set background=dark
+
+" Underlines spelling, and search has to be after colorscheme to work.
+hi SpellBad cterm=underline
+hi Search ctermbg=black ctermfg=yellow
+
+" Golang syntax highlighting
+let g:go_highlight_structs = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_operations = 1
+let g:go_highlight_build_constraints = 1

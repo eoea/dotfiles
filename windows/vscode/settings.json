@@ -1,0 +1,21 @@
+{
+    "workbench.colorTheme": "simple dark", // Extension `simple dark` by tek256
+    "breadcrumbs.enabled": false,
+    "window.menuBarVisibility": "toggle",
+    "workbench.statusBar.visible": true,
+    "workbench.activityBar.visible": true,
+    "editor.tabCompletion": "on",
+    "editor.minimap.enabled": false,
+    "editor.lineNumbers":  "relative",
+    "editor.renderWhitespace": "none",
+    "editor.suggestOnTriggerCharacters": true,
+    "[markdown]": {
+        "editor.quickSuggestions": false,
+    },
+    "workbench.iconTheme": "vs-minimal",
+    "editor.fontSize": 17
+    "workbench.editor.untitled.hint": "hidden",
+    "editor.fontLigatures": null,
+    "editor.rulers": [80],
+    "workbench.tree.indent" : 4 
+}

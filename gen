@@ -1,0 +1,167 @@
+#!/usr/bin/env bash
+# This program is a shell script to set up my configuration files and 
+# directories, and installs my essential packages on my new system.
+# Created by Emile O.E Antat (eoea)
+
+set -e
+
+function usage() {
+  echo "${0} is a shell script that sets up my configuration files and "
+  echo "directories, and installs my essential packages on my new system." 
+  echo 
+  echo "Usage:"
+  echo
+  echo "        ${0} [flags]"
+  echo
+  echo "The flags are:"
+  echo
+  echo "        -h         Show help."
+  echo "        -l         Creates all my missing directories, symlinks, "
+  echo "                   and package manager + packages."
+  echo
+  echo "Examples:"
+  echo
+  echo "        ${0} -l"
+  echo
+}
+
+######################################
+# Runs the OS specific package manager, the package manager attempts to
+# install these package from a text file based on the OS.
+# For MacOS, brew is downloaded if it is not on the system.
+# For Linux, apt or dnf is used based on availability on the system.
+# Argument:
+#   None
+# Return:
+#   (Empty return when neither apt or dnf is found on the system.)
+#######################################
+function install_pkgs() {
+
+  if [[ "$(uname)" == "Darwin" ]]; then
+
+    if [[ ! -e "$(which brew)" ]]; then
+      echo "installing brew"
+      /bin/bash -c "$(curl -fsSL \
+        https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      echo "brew installed"
+    fi
+    
+    local packages
+    packages="$(cat "${PWD}/pkgs/brewmaster.txt")"
+
+    for package in ${packages};
+    do
+      brew install "${package}"
+    done
+
+  else 
+
+    local packages
+    local pkg_mngr
+    packages="$(cat "${PWD}/pkgs/linuxbox.txt")"
+
+    if [[ -e "$(which apt)" ]]; then
+      pkg_mngr="$(which apt)"
+    elif [[ -e "$(which dnf)" ]]; then
+      pkg_mngr="$(which dnf)"
+    else
+      echo "apt or dnf not detected"
+      echo "packages are not installed"
+      return
+    fi
+
+    for package in ${packages};
+    do
+      sudo "${pkg_mngr}" install "${package}"
+    done
+
+  fi
+}
+
+######################################
+# Creates symlinks of my rcfiles from my repo to the home directory.
+# A check of which OS I am running is made because the symlink for
+# bashrc is different for MacOS and Linux. If the OS is Linux,
+# then a further check is made to see if gnome-terminal is installed; 
+# if present, then the default config file for gnome-terminal is 
+# replaced with mine, otherwise, this is skipped.
+# Argument:
+#   None
+#######################################
+function creat_symlinks() {
+
+  if [[ "$(uname)" == "Darwin" ]]; then
+    ln -sf "${PWD}/bash/mac_os/profile" "${HOME}/.profile"
+    ln -sf "${PWD}/bash/mac_os/bashrc" "${HOME}/.bashrc"
+  else
+    ln -sf "${PWD}/bash/linux/bash_aliases" "${HOME}/.bash_aliases"
+
+    if [[ ! -e "$(which dconf)" ]]; then
+      echo "dconf for gnome-terminal not installed, skipping this" 
+      echo "should you need to install:"
+      echo "sudo apt install dconf-cli"
+    else
+      dconf load /org/gnome/terminal/ < "${PWD}/g-term/g_term.properties" 
+      echo "preferred settings has been applied to gnome-terminal"
+    fi
+  fi
+
+  ln -sf "${PWD}/vim/vimrc" "${HOME}/.vimrc"
+  ln -sf "${PWD}/git/gitconfig" "${HOME}/.gitconfig"
+  ln -sf "${PWD}/git/gitignore" "${HOME}/.gitignore"
+  ln -sf "${PWD}/sqlite/sqliterc" "${HOME}/.sqliterc"
+  ln -sf "${PWD}/tmux/mac_os/tmux.conf" "${HOME}/.tmux.conf"
+  ln -sf "${PWD}/vim/ftplugin/sh.vim" "${HOME}/.vim/ftplugin/sh.vim"
+
+  echo "all symlinks have been created"
+}
+
+######################################
+# creates a directory if it does not exist. 
+# Argument:
+#   dir
+#######################################
+function creat_dir() {
+  local dir="${*}"
+  if [[ ! -d "${dir}" ]]; then
+    mkdir -p "${dir}"
+    echo "${dir} directory did not exist so it was created"
+  else
+    echo "${dir} directory already exists"
+  fi
+}
+
+function main() {
+  local exit_code=0
+  while getopts "hl" flags; do 
+    case "${flags}" in 
+      h) 
+        usage
+        exit
+        ;;
+      l)
+        creat_dir "${HOME}/.local/bin"
+        creat_dir "${HOME}/.local/scripts"
+        creat_dir "${HOME}/.vim/plugged"
+        creat_dir "${HOME}/.vim/ftplugin"
+        creat_dir "${HOME}/Programming/Repos/github.com/eoea/"
+        creat_dir "${HOME}/Programming/Repos/gitlab.com/eoea/"
+        creat_symlinks
+        install_pkgs
+
+        if [[ "$(uname)" == "Darwin" ]]; then
+          source "${HOME}/.bashrc"
+        else
+          source "${HOME}/.bash_aliases"
+        fi
+        ;;
+      *)
+        echo "error: invalid flag, use ${0} -h for help."
+        exit_code=1
+        ;;
+    esac
+  done
+  return "${exit_code}"
+}
+
+main "$@"

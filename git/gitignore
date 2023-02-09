@@ -1,0 +1,6 @@
+# Directories
+~*
+.DS_Store
+
+# Python:
+*.pyc

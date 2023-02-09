@@ -1,0 +1,11 @@
+[user]
+    name = eoea
+    email = eoea754@gmail.com
+[core]
+    excludesfile = ~/.gitignore
+[merge]
+    conflictStyle = diff3
+[init]
+    defaultBranch = main
+[color]
+    ui = auto

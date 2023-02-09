@@ -1,0 +1,13 @@
+bash-completion@2
+dialog
+entr
+gh
+gnupg
+libffi
+llvm
+pandoc
+reattach-to-user-namespace
+shellcheck
+tmux
+vim
+wget

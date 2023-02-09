@@ -1,0 +1,53 @@
+#Appearance
+PS1="eoea: "
+
+# Functionality
+set -o vi
+
+# Clears bash_history
+cat /dev/null > ~/.bash_history && history -c
+
+# My custom program path
+export PATH="${HOME}/.local/bin:${PATH}"
+export PATH="${HOME}/.local/scripts:${PATH}"
+
+# Repo Path Variables
+export REPO="${HOME}/Programming/Repos/github.com/eoea"
+export NOTES="${HOME}/Library/Mobile Documents/com~apple~CloudDocs/knowledge-hub/coding-notes"
+export DOTS="${HOME}/Programming/Repos/github.com/eoea/dotfiles"
+
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH="/opt/homebrew/bin:${PATH}"
+
+# Bash-completion Homebrew
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+
+# Golang path environment
+export PATH="/usr/local/go/bin:${PATH}"
+export GOPATH="${HOME}/.local/go"
+export PATH="${GOPATH}/bin:${PATH}"
+
+# Protobuf path environment
+export PATH="${HOME}/.local/bin/protobuf/bin:${PATH}"
+export PATH="${HOME}/.local/go/bin/protoc-gen-go:${PATH}"
+
+# Haskell path environment
+export PATH="${HOME}/.local/haskell/ghcup:${PATH}"
+export PATH="${HOME}/.local/haskell/cabal/bin:${PATH}"
+export PATH="${HOME}/.local/haskell/ghcup/bin:${PATH}"
+
+# LLVM path environment
+export PATH="/opt/homebrew/opt/llvm/bin:${PATH}"
+
+# FLAGS
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+
+# Aliases
+alias update="brew update && brew upgrade"
+alias ls="ls --color=auto"
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias grep="grep --color=auto"
+alias notes="cd \"${NOTES}\""

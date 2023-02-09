@@ -1,0 +1,32 @@
+# Appearance
+PS1="eoea: "
+
+# Functionality
+set -o vi
+
+# Clears history on signout
+cat /dev/null > ~/.bash_history && history -c
+
+# PATH Variables
+export REPO="${HOME}/Programming/Repos/github.com/eoea"
+export DOTS="${HOME}/Programming/Repos/github.com/eoea/dotfiles"
+
+# Golang path environment
+export PATH="/usr/local/go/bin:${PATH}"
+export GOPATH="${HOME}/.local/go"
+export PATH="${GOPATH}/bin:${PATH}"
+
+# Haskell path environment
+export PATH="${HOME}/.local/haskell/ghcup:${PATH}"
+export PATH="${HOME}/.local/haskell/cabal/bin:${PATH}"
+export PATH="${HOME}/.local/haskell/ghcup/bin:${PATH}"
+
+# My Custom Program Path
+export PATH="${HOME}/.local/bin:${PATH}"
+
+# Aliases
+alias update="sudo apt update && apt upgrade"
+alias ls="ls --color=auto"
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias grep="grep --color=auto"
