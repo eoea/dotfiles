@@ -56,9 +56,7 @@ function install_pkgs() {
 
   else 
 
-    local packages
     local pkg_mngr
-    packages="$(cat "${PWD}/pkgs/linuxbox.txt")"
 
     if [[ -e "$(which apt)" ]]; then
       pkg_mngr="$(which apt)"
@@ -69,6 +67,9 @@ function install_pkgs() {
       echo "packages are not installed"
       return
     fi
+
+    local packages
+    packages="$(cat "${PWD}/pkgs/linuxbox.txt")"
 
     for package in ${packages};
     do
