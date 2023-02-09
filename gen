@@ -82,7 +82,7 @@ function install_pkgs() {
 ######################################
 # Creates symlinks of my rcfiles from my repo to the home directory.
 # A check of which OS I am running is made because the symlink for
-# bashrc is different for MacOS and Linux. If the OS is Linux,
+# bashrc and tmux are different for MacOS and Linux. If the OS is Linux,
 # then a further check is made to see if gnome-terminal is installed; 
 # if present, then the default config file for gnome-terminal is 
 # replaced with mine, otherwise, this is skipped.
@@ -94,8 +94,10 @@ function creat_symlinks() {
   if [[ "$(uname)" == "Darwin" ]]; then
     ln -sf "${PWD}/bash/mac_os/profile" "${HOME}/.profile"
     ln -sf "${PWD}/bash/mac_os/bashrc" "${HOME}/.bashrc"
+    ln -sf "${PWD}/tmux/mac_os/tmux.conf" "${HOME}/.tmux.conf"
   else
     ln -sf "${PWD}/bash/linux/bash_aliases" "${HOME}/.bash_aliases"
+    ln -sf "${PWD}/tmux/linux/tmux.conf" "${HOME}/.tmux.conf"
 
     if [[ ! -e "$(which dconf)" ]]; then
       echo "dconf for gnome-terminal not installed, skipping this" 
@@ -111,7 +113,6 @@ function creat_symlinks() {
   ln -sf "${PWD}/git/gitconfig" "${HOME}/.gitconfig"
   ln -sf "${PWD}/git/gitignore" "${HOME}/.gitignore"
   ln -sf "${PWD}/sqlite/sqliterc" "${HOME}/.sqliterc"
-  ln -sf "${PWD}/tmux/mac_os/tmux.conf" "${HOME}/.tmux.conf"
   ln -sf "${PWD}/vim/ftplugin/sh.vim" "${HOME}/.vim/ftplugin/sh.vim"
 
   echo "all symlinks have been created"
