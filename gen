@@ -151,11 +151,7 @@ function main() {
         creat_symlinks
         install_pkgs
 
-        if [[ "$(uname)" == "Darwin" ]]; then
-          source "${HOME}/.bashrc"
-        else
-          source "${HOME}/.bash_aliases"
-        fi
+        source "${HOME}/.bashrc"
         ;;
       *)
         echo "error: invalid flag, use ${0} -h for help."
