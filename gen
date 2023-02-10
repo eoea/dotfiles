@@ -30,85 +30,100 @@ function usage() {
 # install these package from a text file based on the OS.
 # For MacOS, brew is downloaded if it is not on the system.
 # For Linux, apt or dnf is used based on availability on the system.
+# Note: sudo is called with apt or dnf.
 # Argument:
 #   None
 # Return:
 #   (Empty return when neither apt or dnf is found on the system.)
+#   (Empty return when neither Darwin or Linux kernel name detected.)
 #######################################
 function install_pkgs() {
+  local pkg_mngr
+  local packages
+  local kernel
+  kernel="$(uname -s)"
 
-  if [[ "$(uname)" == "Darwin" ]]; then
+  case "${kernel}" in
+    Darwin)
+      if [[ ! -e "$(which brew)" ]]; then
+        echo "installing brew"
+        /bin/bash -c "$(curl -fsSL \
+          https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        echo "brew installed"
+      fi
+      packages="$(cat "${PWD}/pkgs/brewmaster.txt")"
+      pkg_mngr="$(which brew)"
+      ;;
+    Linux)
+      if [[ -e "$(which apt)" ]]; then
+        pkg_mngr="$(which apt)"
+      elif [[ -e "$(which dnf)" ]]; then
+        pkg_mngr="$(which dnf)"
+      else
+        echo "apt or dnf not detected"
+        echo "packages were not installed"
+        return
+      fi
 
-    if [[ ! -e "$(which brew)" ]]; then
-      echo "installing brew"
-      /bin/bash -c "$(curl -fsSL \
-        https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      echo "brew installed"
-    fi
-    
-    local packages
-    packages="$(cat "${PWD}/pkgs/brewmaster.txt")"
-
-    for package in ${packages};
-    do
-      brew install "${package}"
-    done
-
-  else 
-
-    local pkg_mngr
-
-    if [[ -e "$(which apt)" ]]; then
-      pkg_mngr="$(which apt)"
-    elif [[ -e "$(which dnf)" ]]; then
-      pkg_mngr="$(which dnf)"
-    else
-      echo "apt or dnf not detected"
-      echo "packages are not installed"
+      packages="$(cat "${PWD}/pkgs/linuxbox.txt")"
+      ;;
+    *)
+      echo "unkown kernel, skipping package installation"
       return
-    fi
+      ;;
+  esac
 
-    local packages
-    packages="$(cat "${PWD}/pkgs/linuxbox.txt")"
-
-    for package in ${packages};
-    do
+  for package in ${packages};
+  do
+    if [[ "${kernel}" == "Linux" ]]; then
       sudo "${pkg_mngr}" install "${package}"
-    done
-
-  fi
+    else
+      "${pkg_mngr}" install "${package}"
+    fi
+  done
 }
 
 ######################################
 # Creates symlinks of my rcfiles from my repo to the home directory.
-# A check of which OS I am running is made because the symlink for
-# bashrc and tmux are different for MacOS and Linux. If the OS is Linux,
-# then a further check is made to see if gnome-terminal is installed; 
-# if present, then the default config file for gnome-terminal is 
+# A kernel name check is performed because the symlink for bashrc and
+# tmux are different for MacOS and Linux. If the kernel name is Linux,
+# then a further check is made to see if gnome-terminal is installed;
+# if present, then the default config file for gnome-terminal is
 # replaced with mine, otherwise, this is skipped.
 # Argument:
 #   None
+# Return:
+#   (Empty return when neither Darwin or Linux kernel name detected.)
 #######################################
 function creat_symlinks() {
+  local kernel
+  kernel="$(uname -s)"
 
-  if [[ "$(uname)" == "Darwin" ]]; then
-    ln -sf "${PWD}/bash/mac_os/profile" "${HOME}/.profile"
-    ln -sf "${PWD}/bash/mac_os/bashrc" "${HOME}/.bashrc"
-    ln -sf "${PWD}/tmux/mac_os/tmux.conf" "${HOME}/.tmux.conf"
-  else
-    ln -sf "${PWD}/bash/linux/bashrc" "${HOME}/.bashrc"
-    ln -sf "${PWD}/bash/linux/bash_aliases" "${HOME}/.bash_aliases"
-    ln -sf "${PWD}/tmux/linux/tmux.conf" "${HOME}/.tmux.conf"
+  case "${kernel}" in
+    Darwin)
+      ln -sf "${PWD}/bash/mac_os/profile" "${HOME}/.profile"
+      ln -sf "${PWD}/bash/mac_os/bashrc" "${HOME}/.bashrc"
+      ln -sf "${PWD}/tmux/mac_os/tmux.conf" "${HOME}/.tmux.conf"
+      ;;
+    Linux)
+      ln -sf "${PWD}/bash/linux/bashrc" "${HOME}/.bashrc"
+      ln -sf "${PWD}/bash/linux/bash_aliases" "${HOME}/.bash_aliases"
+      ln -sf "${PWD}/tmux/linux/tmux.conf" "${HOME}/.tmux.conf"
 
-    if [[ ! -e "$(which dconf)" ]]; then
-      echo "dconf for gnome-terminal not installed, skipping this" 
-      echo "should you need to install:"
-      echo "sudo apt install dconf-cli"
-    else
-      dconf load /org/gnome/terminal/ < "${PWD}/g-term/g_term.properties" 
-      echo "preferred settings has been applied to gnome-terminal"
-    fi
-  fi
+      if [[ ! -e "$(which dconf)" ]]; then
+        echo "dconf for gnome-terminal not installed, skipping this"
+        echo "should you need to install:"
+        echo "sudo apt install dconf-cli"
+      else
+        dconf load /org/gnome/terminal/ < "${PWD}/g-term/g_term.properties"
+        echo "preferred settings has been applied to gnome-terminal"
+      fi
+      ;;
+    *)
+      echo "unkown kernel, skipping symlink creation"
+      return
+      ;;
+  esac
 
   ln -sf "${PWD}/vim/vimrc" "${HOME}/.vimrc"
   ln -sf "${PWD}/git/gitconfig" "${HOME}/.gitconfig"
@@ -150,7 +165,6 @@ function main() {
         creat_dir "${HOME}/Programming/Repos/gitlab.com/eoea/"
         creat_symlinks
         install_pkgs
-
         source "${HOME}/.bashrc"
         ;;
       *)
