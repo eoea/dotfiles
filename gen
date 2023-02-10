@@ -60,15 +60,15 @@ function install_pkgs() {
       elif [[ -e "$(which dnf)" ]]; then
         pkg_mngr="$(which dnf)"
       else
-        echo "apt or dnf not detected"
-        echo "packages were not installed"
+        echo "apt or dnf not detected" >&2
+        echo "packages were not installed" >&2
         return
       fi
 
       packages="$(cat "${PWD}/pkgs/linuxbox.txt")"
       ;;
     *)
-      echo "unkown kernel, skipping package installation"
+      echo "unkown kernel, skipping package installation" >&2
       return
       ;;
   esac
@@ -111,7 +111,7 @@ function creat_symlinks() {
       ln -sf "${PWD}/tmux/linux/tmux.conf" "${HOME}/.tmux.conf"
 
       if [[ ! -e "$(which dconf)" ]]; then
-        echo "dconf for gnome-terminal not installed, skipping this"
+        echo "dconf for gnome-terminal not installed, skipping this" >&2
         echo "should you need to install:"
         echo "sudo apt install dconf-cli"
       else
@@ -120,7 +120,7 @@ function creat_symlinks() {
       fi
       ;;
     *)
-      echo "unkown kernel, skipping symlink creation"
+      echo "unkown kernel, skipping symlink creation" >&2
       return
       ;;
   esac
@@ -168,7 +168,7 @@ function main() {
         source "${HOME}/.bashrc"
         ;;
       *)
-        echo "error: invalid flag, use ${0} -h for help."
+        echo "error: invalid flag, use ${0} -h for help." >&2
         exit_code=1
         ;;
     esac
