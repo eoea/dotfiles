@@ -17,7 +17,9 @@ function usage() {
   echo
   echo "        -h         Show help."
   echo "        -l         Creates all my missing directories, symlinks, "
-  echo "                   and package manager + packages."
+  echo "                   and package manager + packages. Recommend for "
+  echo "                   use on a brand new system."
+  echo "        -s         Create symlinks only."
   echo
   echo "Examples:"
   echo
@@ -64,7 +66,6 @@ function install_pkgs() {
         echo "packages were not installed" >&2
         return
       fi
-
       packages="$(cat "${PWD}/pkgs/linuxbox.txt")"
       ;;
     *)
@@ -130,6 +131,8 @@ function creat_symlinks() {
   ln -sf "${PWD}/git/gitignore" "${HOME}/.gitignore"
   ln -sf "${PWD}/sqlite/sqliterc" "${HOME}/.sqliterc"
   ln -sf "${PWD}/vim/ftplugin/sh.vim" "${HOME}/.vim/ftplugin/sh.vim"
+  ln -sf "${PWD}/vim/ftplugin/markdown.vim" "${HOME}/.vim/ftplugin/markdown.vim"
+  ln -sf "${PWD}/vim/spell/en.utf-8.add" "${HOME}/.vim/spell/en.utf-8.add"
 
   echo "all symlinks have been created"
 }
@@ -149,22 +152,32 @@ function creat_dir() {
   fi
 }
 
+function install_vim_plugin_mngr() {
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+}
+
 function main() {
   local exit_code=0
-  while getopts "hl" flags; do 
+  while getopts "hls" flags; do 
     case "${flags}" in 
       h) 
         usage
+        ;;
+      s)
+        creat_symlinks
         ;;
       l)
         creat_dir "${HOME}/.local/bin"
         creat_dir "${HOME}/.local/scripts"
         creat_dir "${HOME}/.vim/plugged"
         creat_dir "${HOME}/.vim/ftplugin"
+        creat_dir "${HOME}/.vim/spell"
         creat_dir "${HOME}/Programming/Repos/github.com/eoea/"
         creat_dir "${HOME}/Programming/Repos/gitlab.com/eoea/"
         creat_symlinks
         install_pkgs
+        install_vim_plugin_mngr
         source "${HOME}/.bashrc"
         ;;
       *)
