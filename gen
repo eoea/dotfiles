@@ -96,6 +96,7 @@ function creat_symlinks() {
     ln -sf "${PWD}/bash/mac_os/bashrc" "${HOME}/.bashrc"
     ln -sf "${PWD}/tmux/mac_os/tmux.conf" "${HOME}/.tmux.conf"
   else
+    ln -sf "${PWD}/bash/linux/bashrc" "${HOME}/.bashrc"
     ln -sf "${PWD}/bash/linux/bash_aliases" "${HOME}/.bash_aliases"
     ln -sf "${PWD}/tmux/linux/tmux.conf" "${HOME}/.tmux.conf"
 
@@ -139,7 +140,6 @@ function main() {
     case "${flags}" in 
       h) 
         usage
-        exit
         ;;
       l)
         creat_dir "${HOME}/.local/bin"
