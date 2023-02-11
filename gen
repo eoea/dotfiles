@@ -51,7 +51,6 @@ function install_pkgs() {
         echo "installing brew"
         /bin/bash -c "$(curl -fsSL \
           https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        echo "brew installed"
       fi
       packages="$(cat "${PWD}/pkgs/brewmaster.txt")"
       pkg_mngr="$(which brew)"
@@ -137,22 +136,8 @@ function creat_symlinks() {
   echo "all symlinks have been created"
 }
 
-######################################
-# creates a directory if it does not exist. 
-# Argument:
-#   dir
-#######################################
-function creat_dir() {
-  local dir="${*}"
-  if [[ ! -d "${dir}" ]]; then
-    mkdir -p "${dir}"
-    echo "${dir} directory did not exist so it was created"
-  else
-    echo "${dir} directory already exists"
-  fi
-}
-
 function install_vim_plugin_mngr() {
+  echo "installing vim-plug"
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
@@ -168,13 +153,13 @@ function main() {
         creat_symlinks
         ;;
       l)
-        creat_dir "${HOME}/.local/bin"
-        creat_dir "${HOME}/.local/scripts"
-        creat_dir "${HOME}/.vim/plugged"
-        creat_dir "${HOME}/.vim/ftplugin"
-        creat_dir "${HOME}/.vim/spell"
-        creat_dir "${HOME}/Programming/Repos/github.com/eoea/"
-        creat_dir "${HOME}/Programming/Repos/gitlab.com/eoea/"
+        mkdir -pv "${HOME}/.local/bin"
+        mkdir -pv "${HOME}/.local/scripts"
+        mkdir -pv "${HOME}/.vim/plugged"
+        mkdir -pv "${HOME}/.vim/ftplugin"
+        mkdir -pv "${HOME}/.vim/spell"
+        mkdir -pv "${HOME}/Programming/Repos/github.com/eoea/"
+        mkdir -pv "${HOME}/Programming/Repos/gitlab.com/eoea/"
         creat_symlinks
         install_pkgs
         install_vim_plugin_mngr
