@@ -13,8 +13,8 @@ export PATH="${HOME}/.local/scripts:${PATH}"
 
 # Repo Path Variables
 export REPO="${HOME}/Programming/Repos/github.com/eoea"
-export NOTES="${HOME}/Library/Mobile Documents/com~apple~CloudDocs/knowledge-hub/coding-notes"
 export DOTS="${HOME}/Programming/Repos/github.com/eoea/dotfiles"
+export NOTES="${HOME}/Programming/Repos/gitlab.com/eoea/coding-notes"
 
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -50,4 +50,3 @@ alias ls="ls --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias grep="grep --color=auto"
-alias notes="cd \"${NOTES}\""
