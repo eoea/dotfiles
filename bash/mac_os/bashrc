@@ -46,7 +46,7 @@ export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 # Aliases
 alias update="brew update && brew upgrade"
-alias ls="ls --color=auto"
+alias ls="ls -G"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias grep="grep --color=auto"
