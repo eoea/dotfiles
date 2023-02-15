@@ -36,8 +36,8 @@ function usage() {
 # Argument:
 #   None
 # Return:
-#   (Empty return when neither apt or dnf is found on the system.)
-#   (Empty return when neither Darwin or Linux kernel name detected.)
+#   (Naked return when neither apt or dnf is found on the system.)
+#   (Naked return when neither Darwin or Linux kernel name detected.)
 #######################################
 function install_pkgs() {
   local pkg_mngr
