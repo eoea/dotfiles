@@ -93,7 +93,7 @@ function install_pkgs() {
 # Argument:
 #   None
 # Return:
-#   (Empty return when neither Darwin or Linux kernel name detected.)
+#   (Naked return when neither Darwin or Linux kernel name detected.)
 #######################################
 function creat_symlinks() {
   local kernel
