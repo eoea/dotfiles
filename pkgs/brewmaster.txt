@@ -5,9 +5,13 @@ gh
 gnupg
 libffi
 llvm
+openjdk
 pandoc
+pybind11
+python@3.10
 reattach-to-user-namespace
 shellcheck
 tmux
+tree
 vim
 wget
