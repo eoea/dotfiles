@@ -37,6 +37,9 @@ export PATH="${HOME}/.local/haskell/ghcup:${PATH}"
 export PATH="${HOME}/.local/haskell/cabal/bin:${PATH}"
 export PATH="${HOME}/.local/haskell/ghcup/bin:${PATH}"
 
+# Java path environment (used for spark)
+export PATH="/opt/homebrew/opt/openjdk.bin:${PATH}"
+
 # LLVM path environment
 export PATH="/opt/homebrew/opt/llvm/bin:${PATH}"
 
