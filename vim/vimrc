@@ -8,6 +8,7 @@ set encoding=utf-8
 scriptencoding utf-8
 
 " Quality of life
+set novisualbell
 set number relativenumber
 set textwidth=80
 set wildmenu
