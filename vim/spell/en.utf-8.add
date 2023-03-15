@@ -20,3 +20,10 @@ filesystems
 EOF
 hostname
 bitset
+Sqoop
+Hadoop
+MapReduce
+RDBMS
+HDFS
+Avro
+SequenceFiles
