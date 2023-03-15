@@ -82,7 +82,9 @@ colorscheme simple-dark-transparent
 set background=dark
 
 " Underlines spelling, and search has to be after colorscheme to work.
-hi SpellBad cterm=underline
+syn keyword   myTodo   contained   TODO: FIXME: BUG:
+hi keyword cterm=bold ctermfg=lightgrey
+hi SpellBad cterm=underline ctermfg=darkred
 hi Search ctermbg=black ctermfg=yellow
 
 " Golang syntax highlighting
