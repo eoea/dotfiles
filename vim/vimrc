@@ -86,6 +86,7 @@ syn keyword   myTodo   contained   TODO: FIXME: BUG:
 hi keyword cterm=bold ctermfg=lightgrey
 hi SpellBad cterm=underline ctermfg=darkred
 hi Search ctermbg=black ctermfg=yellow
+au FileType markdown hi Title cterm=bold ctermfg=lightgrey
 
 " Golang syntax highlighting
 let g:go_highlight_structs = 1
