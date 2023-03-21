@@ -1,7 +1,6 @@
 " Basics
 syntax on 
 set nocompatible
-set path+=** " search directories recursively for a file
 filetype plugin on " for file specific config
 filetype plugin indent on
 set encoding=utf-8
