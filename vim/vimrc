@@ -88,6 +88,9 @@ hi Search ctermbg=black ctermfg=yellow
 au FileType markdown hi Title cterm=bold ctermfg=lightgrey
 autocmd BufWritePre *.py :%s/\s\+$//e "remove trailing whitespace
 
+" Set the compiler for Python files to pylint
+autocmd FileType python compiler pylint
+
 " Golang syntax highlighting
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
