@@ -109,6 +109,10 @@ function creat_symlinks() {
       ln -sfv "${PWD}/bash/linux/bashrc" "${HOME}/.bashrc"
       ln -sfv "${PWD}/bash/linux/bash_aliases" "${HOME}/.bash_aliases"
       ln -sfv "${PWD}/tmux/linux/tmux.conf" "${HOME}/.tmux.conf"
+      ln -sfv "${PWD}/fonts/Hack-BoldItalic.ttf" "${HOME}/.local/share/fonts/Hack-BoldItalic.ttf"
+      ln -sfv "${PWD}/fonts/Hack-Bold.ttf"  "${HOME}/.local/share/fonts/Hack-Bold.ttf"
+      ln -sfv "${PWD}/fonts/Hack-Italic.ttf"  "${HOME}/.local/share/fonts/Hack-Italic.ttf"
+      ln -sfv "${PWD}/fonts/Hack-Regular.ttf" "${HOME}/.local/share/fonts/Hack-Regular.ttf"
 
       if [[ ! -e "$(which dconf)" ]]; then
         echo "dconf for gnome-terminal not installed, skipping this" >&2
@@ -153,6 +157,7 @@ function main() {
       l)
         mkdir -pv "${HOME}/.local/bin"
         mkdir -pv "${HOME}/.local/scripts"
+        mkdir -pv "${HOME}/.local/share"
         mkdir -pv "${HOME}/.vim/plugged"
         mkdir -pv "${HOME}/.vim/ftplugin"
         mkdir -pv "${HOME}/.vim/spell"
