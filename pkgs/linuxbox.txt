@@ -3,8 +3,4 @@ entr
 gh
 pandoc
 shellcheck
-gimp
-vlc
-vim
 htop
-shotwell
