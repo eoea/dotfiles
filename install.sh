@@ -158,6 +158,7 @@ function main() {
         mkdir -pv "${HOME}/.local/bin"
         mkdir -pv "${HOME}/.local/scripts"
         mkdir -pv "${HOME}/.local/share"
+        mkdir -pv "${HOME}/.local/share/fonts"
         mkdir -pv "${HOME}/.vim/plugged"
         mkdir -pv "${HOME}/.vim/ftplugin"
         mkdir -pv "${HOME}/.vim/spell"
