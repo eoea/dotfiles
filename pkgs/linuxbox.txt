@@ -6,3 +6,4 @@ shellcheck
 htop
 vim
 tmux
+gcc
