@@ -5,3 +5,4 @@ pandoc
 shellcheck
 htop
 vim
+tmux
