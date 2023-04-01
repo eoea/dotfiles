@@ -15,6 +15,7 @@ export PATH="${HOME}/.local/scripts:${PATH}"
 export REPO="${HOME}/Programming/Repos/github.com/eoea"
 export DOTS="${HOME}/Programming/Repos/github.com/eoea/dotfiles"
 export NOTES="${HOME}/Programming/Repos/gitlab.com/eoea/coding-notes"
+export GITLAB="${HOME}/Programming/Repos/gitlab.com/eoea/"
 
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
