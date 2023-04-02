@@ -8,3 +8,4 @@ vim
 tmux
 gcc
 make
+python3-pip
