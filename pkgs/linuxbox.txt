@@ -7,3 +7,4 @@ htop
 vim
 tmux
 gcc
+make
