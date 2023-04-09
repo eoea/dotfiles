@@ -28,7 +28,6 @@ export PATH="/opt/homebrew/bin:${PATH}"
 export PATH="/usr/local/go/bin:${PATH}"
 export GOPATH="${HOME}/.local/go"
 export PATH="${GOPATH}/bin:${PATH}"
-export GITLAB="${HOME}/Programming/Repos/gitlab.com/eoea/"
 
 # Protobuf path environment
 export PATH="${HOME}/.local/bin/protobuf/bin:${PATH}"
