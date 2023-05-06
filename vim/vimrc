@@ -82,7 +82,7 @@ colorscheme simple-dark-transparent
 set background=dark
 
 " Underlines spelling, and search has to be after colorscheme to work.
-syn keyword   myTodo   contained   TODO: FIXME: BUG: DBUGR:
+syn keyword myTodo contained TODO: FIXME: BUG:
 hi keyword cterm=bold
 hi SpellBad cterm=underline ctermfg=darkred
 hi Search ctermbg=black ctermfg=yellow
