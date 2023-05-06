@@ -82,12 +82,12 @@ colorscheme simple-dark-transparent
 set background=dark
 
 " Underlines spelling, and search has to be after colorscheme to work.
-syn keyword   myTodo   contained   TODO: FIXME: BUG:
+syn keyword   myTodo   contained   TODO: FIXME: BUG: DBUGR:
 hi keyword cterm=bold
 hi SpellBad cterm=underline ctermfg=darkred
 hi Search ctermbg=black ctermfg=yellow
 au FileType markdown hi Title cterm=bold ctermfg=lightgrey
-autocmd BufWritePre *.py :%s/\s\+$//e "remove trailing whitespace
+autocmd BufWritePre *.py :%s/\s\+$//e "remove trailing whitespace in .py
 
 " Golang syntax highlighting
 let g:go_highlight_types = 1
