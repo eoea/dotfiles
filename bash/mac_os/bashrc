@@ -38,7 +38,7 @@ export PATH="${HOME}/.local/haskell/ghcup:${PATH}"
 export PATH="${HOME}/.local/haskell/cabal/bin:${PATH}"
 export PATH="${HOME}/.local/haskell/ghcup/bin:${PATH}"
 
-# Java Development Kit path environment
+# JVM path environment
 export PATH="/opt/homebrew/opt/openjdk.bin:${PATH}"
 
 # Scala path environment
