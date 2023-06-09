@@ -133,6 +133,7 @@ function creat_symlinks() {
   ln -sfv "${PWD}/git/gitconfig" "${HOME}/.gitconfig"
   ln -sfv "${PWD}/git/gitignore" "${HOME}/.gitignore"
   ln -sfv "${PWD}/sqlite/sqliterc" "${HOME}/.sqliterc"
+  ln -sfv "${PWD}/cobra/cobra.yaml" "${HOME}/.cobra.yaml"
   ln -sfv "${PWD}/vim/ftplugin/sh.vim" "${HOME}/.vim/ftplugin/sh.vim"
   ln -sfv "${PWD}/vim/ftplugin/markdown.vim" "${HOME}/.vim/ftplugin/markdown.vim"
   ln -sfv "${PWD}/vim/spell/en.utf-8.add" "${HOME}/.vim/spell/en.utf-8.add"
