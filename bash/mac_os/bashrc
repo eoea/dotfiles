@@ -27,6 +27,7 @@ export PATH="/opt/homebrew/bin:${PATH}"
 # Golang path environment
 export PATH="/usr/local/go/bin:${PATH}"
 export GOPATH="${HOME}/.local/go"
+export GOBIN="${HOME}/.local/go/bin"
 export PATH="${GOPATH}/bin:${PATH}"
 
 # Protobuf path environment
