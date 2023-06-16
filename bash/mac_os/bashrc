@@ -47,6 +47,9 @@ export PATH="${HOME}/Library/Application Support/Coursier/bin:${PATH}"
 
 # LLVM path environment
 export PATH="/opt/homebrew/opt/llvm/bin:${PATH}"
+#
+# prop binaries path environment
+export PATH="/tmp/prop:${PATH}"
 
 # FLAGS
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
