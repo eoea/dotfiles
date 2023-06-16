@@ -1,6 +1,14 @@
-# Directories
-~*
+# Linux:
+*~
+
+# Mac OS:
 .DS_Store
 
 # Python:
 *.pyc
+
+# Go:
+*.test
+
+# C/CPP
+*.out

@@ -27,3 +27,4 @@ RDBMS
 HDFS
 Avro
 SequenceFiles
+STDIN
