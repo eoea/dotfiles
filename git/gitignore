@@ -1,14 +1,76 @@
 # Linux:
 *~
 
-# Mac OS:
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+### Mac OS ###
+# General
 .DS_Store
+.AppleDouble
+.LSOverride
 
-# Python:
-*.pyc
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
 
-# Go:
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+### macOS Patch ###
+# iCloud generated files
+*.icloud
+
+### Go ###
+# Test binary, built with `go test -c`
 *.test
 
-# C/CPP
+### Scala ###
+*.class
+*.log
+
+### C ###
+# Executables
 *.out
+
+# object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+### Python ###
+# Byte-compiled / optimized 
+__pycache__/
+*.py[cod]
+
+# Cython debug symbols
+cython_debug/
+
+# Unit Test
+.pytest_cache/
+.mypy_cache/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
