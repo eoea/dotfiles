@@ -4,4 +4,8 @@ Program makes reference to relative file paths; do not move the shell script.
 
 Usage:
 
-`./install.sh -l`
+Full install:
+`./install.sh -l` 
+
+Just symlinks:
+`./install.sh -s `
