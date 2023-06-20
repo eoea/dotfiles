@@ -28,3 +28,4 @@ HDFS
 Avro
 SequenceFiles
 STDIN
+STDOUT
