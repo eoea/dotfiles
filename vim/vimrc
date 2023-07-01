@@ -74,6 +74,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/tek256/simple-dark'
 Plug 'https://github.com/wellle/context.vim'
+Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
@@ -99,3 +100,6 @@ let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_diagnostic_errors = 1
+
+" Rust stuff
+let g:rustfmt_autosave = 1
