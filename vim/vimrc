@@ -71,6 +71,7 @@ execute "digraphs kS " . 0x1d4f
 " To delete the plugin, comment out the Plug below, then run :PlugClean
 " To update the plugin, run :PlugUpdate
 call plug#begin('~/.vim/plugged')
+Plug 'https://github.com/ConradIrwin/vim-bracketed-paste'
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/tek256/simple-dark'
 Plug 'https://github.com/wellle/context.vim'
