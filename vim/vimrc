@@ -40,10 +40,6 @@ set smarttab
 set smartindent
 set autoindent
 
-" Ctrl-c as copy to system clipboard
-" Visually select text and then Ctrl-c
-vnoremap <C-c> "*y
-
 " Auto parenthesis, brackets, braces 
 inoremap ( ()<left>
 inoremap [ []<left>
