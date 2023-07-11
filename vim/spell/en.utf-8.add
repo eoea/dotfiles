@@ -30,3 +30,6 @@ SequenceFiles
 STDIN
 STDOUT
 variadic
+RESTful
+MVC
+JSON
