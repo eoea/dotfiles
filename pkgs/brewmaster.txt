@@ -14,3 +14,4 @@ tmux
 tree
 vim
 wget
+ctags
