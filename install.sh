@@ -109,10 +109,7 @@ function creat_symlinks() {
       ln -sfv "${PWD}/bash/linux/bashrc" "${HOME}/.bashrc"
       ln -sfv "${PWD}/bash/linux/bash_aliases" "${HOME}/.bash_aliases"
       ln -sfv "${PWD}/tmux/linux/tmux.conf" "${HOME}/.tmux.conf"
-      ln -sfv "${PWD}/fonts/Hack-BoldItalic.ttf" "${HOME}/.local/share/fonts/Hack-BoldItalic.ttf"
-      ln -sfv "${PWD}/fonts/Hack-Bold.ttf"  "${HOME}/.local/share/fonts/Hack-Bold.ttf"
-      ln -sfv "${PWD}/fonts/Hack-Italic.ttf"  "${HOME}/.local/share/fonts/Hack-Italic.ttf"
-      ln -sfv "${PWD}/fonts/Hack-Regular.ttf" "${HOME}/.local/share/fonts/Hack-Regular.ttf"
+      ln -sfv "${PWD}/fonts" "${HOME}/.local/share/fonts"
 
       if [[ ! -e "$(which dconf)" ]]; then
         echo "dconf for gnome-terminal not installed, skipping this" >&2
@@ -134,9 +131,9 @@ function creat_symlinks() {
   ln -sfv "${PWD}/git/gitignore" "${HOME}/.gitignore"
   ln -sfv "${PWD}/sqlite/sqliterc" "${HOME}/.sqliterc"
   ln -sfv "${PWD}/cobra/cobra.yaml" "${HOME}/.cobra.yaml"
-  ln -sfv "${PWD}/vim/ftplugin/sh.vim" "${HOME}/.vim/ftplugin/sh.vim"
-  ln -sfv "${PWD}/vim/ftplugin/markdown.vim" "${HOME}/.vim/ftplugin/markdown.vim"
-  ln -sfv "${PWD}/vim/spell/en.utf-8.add" "${HOME}/.vim/spell/en.utf-8.add"
+  ln -sfv "${PWD}/vim/ftplugin" "${HOME}/.vim/ftplugin"
+  ln -sfv "${PWD}/vim/spell" "${HOME}/.vim/spell"
+  ln -sfv "${PWD}/vim/snippets" "${HOME}/.vim/snippets"
 }
 
 function install_vim_plugin_mngr() {
@@ -159,10 +156,7 @@ function main() {
         mkdir -pv "${HOME}/.local/bin"
         mkdir -pv "${HOME}/.local/scripts"
         mkdir -pv "${HOME}/.local/share"
-        mkdir -pv "${HOME}/.local/share/fonts"
         mkdir -pv "${HOME}/.vim/plugged"
-        mkdir -pv "${HOME}/.vim/ftplugin"
-        mkdir -pv "${HOME}/.vim/spell"
         mkdir -pv "${HOME}/Programming/Repos/github.com/eoea/"
         mkdir -pv "${HOME}/Programming/Repos/gitlab.com/eoea/"
         creat_symlinks
