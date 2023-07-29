@@ -96,9 +96,10 @@ autocmd BufWritePre *.py :%s/\s\+$//e "remove trailing whitespace in .py
 
 " Snippets
 nnoremap ,html :-1read ~/.vim/snippets/skeleton.html<CR>
-nnoremap ,py :-1read ~/.vim/snippets/skeleton.py<CR>
+nnoremap ,python :-1read ~/.vim/snippets/skeleton.py<CR>
 nnoremap ,java :-1read ~/.vim/snippets/skeleton.java<CR>
 nnoremap ,rust :-1read ~/.vim/snippets/skeleton.rs<CR>
+nnoremap ,pylint :-1read ~/.vim/snippets/skeleton.pylint<CR>
 
 " Golang syntax highlighting
 let g:go_highlight_types = 1
