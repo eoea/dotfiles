@@ -95,11 +95,11 @@ au FileType markdown hi Title cterm=bold ctermfg=lightgrey
 autocmd BufWritePre *.py :%s/\s\+$//e "remove trailing whitespace in .py
 
 " Snippets
-nnoremap ,html :-1read ~/.vim/snippets/skeleton.html<CR>
-nnoremap ,python :-1read ~/.vim/snippets/skeleton.py<CR>
-nnoremap ,java :-1read ~/.vim/snippets/skeleton.java<CR>
-nnoremap ,rust :-1read ~/.vim/snippets/skeleton.rs<CR>
-nnoremap ,pylint :-1read ~/.vim/snippets/skeleton.pylint<CR>
+nnoremap ,html :-1read ~/.vim/snippets/skeleton_html.txt<CR>
+nnoremap ,python :-1read ~/.vim/snippets/skeleton_py.txt<CR>
+nnoremap ,java :-1read ~/.vim/snippets/skeleton_java.txt<CR>
+nnoremap ,rust :-1read ~/.vim/snippets/skeleton_rs.txt<CR>
+nnoremap ,pylint :-1read ~/.vim/snippets/skeleton_pylint.txt<CR>
 
 " Golang syntax highlighting
 let g:go_highlight_types = 1
