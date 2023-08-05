@@ -83,6 +83,7 @@ function install_pkgs() {
       else
         # Install without sudo for containers that don't have it.
         "${pkg_mngr}" install "${package}"
+      fi
     else
       "${pkg_mngr}" install "${package}"
     fi
