@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # This program is a shell script to set up my configuration files and 
-# directories, and installs my essential packages on my new system.
+# directories and installs my essential packages on my new system.
 # Created by Emile O.E Antat (eoea)
 
 set -e
 
 function usage() {
   echo "${0} is a shell script that sets up my configuration files and "
-  echo "directories, and installs my essential packages on my new system." 
+  echo "directories and installs my essential packages on my new system." 
   echo 
   echo "Usage:"
   echo
@@ -28,16 +28,18 @@ function usage() {
 }
 
 ######################################
-# Runs the OS specific package manager, the package manager attempts to
+# Runs the OS specific package manager. The package manager attempts to
 # install these package from a text file based on the OS.
-# For MacOS, brew is downloaded if it is not on the system.
+# For MacOS, Homebrew is downloaded if it is not already installed.
 # For Linux, apt or dnf is used based on availability on the system.
-# Note: sudo is called with apt or dnf.
+# Note: sudo is called with apt or dnf if present.
+#
 # Argument:
 #   None
+#
 # Return:
-#   (Naked return when neither apt or dnf is found on the system.)
-#   (Naked return when neither Darwin or Linux kernel name detected.)
+#   (Naked return when neither apt nor dnf is found on the system.)
+#   (Naked return when neither Darwin nor Linux kernel name is detected.)
 #######################################
 function install_pkgs() {
   local pkg_mngr
@@ -68,7 +70,7 @@ function install_pkgs() {
       packages="$(cat "${PWD}/pkgs/linuxbox.txt")"
       ;;
     *)
-      echo "unkown kernel, skipping package installation" >&2
+      echo "unknown kernel, skipping package installation" >&2
       return
       ;;
   esac
@@ -76,26 +78,41 @@ function install_pkgs() {
   for package in ${packages};
   do
     if [[ "${kernel}" == "Linux" ]]; then
-      sudo "${pkg_mngr}" install "${package}"
+      if [[ -e "$(which sudo)" ]]; then
+        sudo "${pkg_mngr}" install "${package}"
+      else
+        # Install without sudo for containers that don't have it.
+        "${pkg_mngr}" install "${package}"
     else
       "${pkg_mngr}" install "${package}"
     fi
   done
 }
 
+function create_directories() {
+  mkdir -pv "${HOME}/.local/bin"
+  mkdir -pv "${HOME}/.local/scripts"
+  mkdir -pv "${HOME}/.local/share"
+  mkdir -pv "${HOME}/.vim/plugged"
+  mkdir -pv "${HOME}/Programming/Repos/github.com/eoea/"
+  mkdir -pv "${HOME}/Programming/Repos/gitlab.com/eoea/"
+}
+
 ######################################
-# Creates symlinks of my rcfiles from my repo to the home directory.
-# A kernel name check is performed because the symlink for bashrc and
-# tmux are different for MacOS and Linux. If the kernel name is Linux,
-# then a further check is made to see if gnome-terminal is installed;
-# if present, then the default config file for gnome-terminal is
-# replaced with mine, otherwise, this is skipped.
-# Argument:
+# Creates symlinks of my rcfiles from my repo to the home directory. 
+# A kernel name check is performed because the symlinks for bashrc and 
+# tmux are different for MacOS and Linux. If the kernel name is Linux, 
+# then a further check is made to see if gnome-terminal is installed. 
+# If it is present, then the default config file for gnome-terminal is 
+# replaced with mine; otherwise, this step is skipped.
+# 
+# Argument: 
 #   None
-# Return:
-#   (Naked return when neither Darwin or Linux kernel name detected.)
+# 
+# Return: 
+#   (Naked return when neither Darwin nor Linux kernel name is detected.)
 #######################################
-function creat_symlinks() {
+function create_symlinks() {
   local kernel
   kernel="$(uname -s)"
 
@@ -150,16 +167,11 @@ function main() {
         usage
         ;;
       s)
-        creat_symlinks
+        create_symlinks
         ;;
       l)
-        mkdir -pv "${HOME}/.local/bin"
-        mkdir -pv "${HOME}/.local/scripts"
-        mkdir -pv "${HOME}/.local/share"
-        mkdir -pv "${HOME}/.vim/plugged"
-        mkdir -pv "${HOME}/Programming/Repos/github.com/eoea/"
-        mkdir -pv "${HOME}/Programming/Repos/gitlab.com/eoea/"
-        creat_symlinks
+        create_directories
+        create_symlinks
         install_pkgs
         install_vim_plugin_mngr
         source "${HOME}/.bashrc"
