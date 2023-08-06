@@ -127,7 +127,6 @@ function create_symlinks() {
       ln -sfv "${PWD}/bash/linux/bashrc" "${HOME}/.bashrc"
       ln -sfv "${PWD}/bash/linux/bash_aliases" "${HOME}/.bash_aliases"
       ln -sfv "${PWD}/tmux/linux/tmux.conf" "${HOME}/.tmux.conf"
-      ln -sfv "${PWD}/fonts" "${HOME}/.local/share/fonts"
 
       if [[ ! -e "$(which dconf)" ]]; then
         echo "dconf for gnome-terminal not installed, skipping this" >&2
