@@ -100,6 +100,7 @@ nnoremap ,python :-1read ~/.vim/snippets/skeleton_py.txt<CR>
 nnoremap ,java :-1read ~/.vim/snippets/skeleton_java.txt<CR>
 nnoremap ,rust :-1read ~/.vim/snippets/skeleton_rs.txt<CR>
 nnoremap ,pylint :-1read ~/.vim/snippets/skeleton_pylint.txt<CR>
+nnoremap ,make :-1read ~/.vim/snippets/skeleton_make.txt<CR>
 
 " Golang syntax highlighting
 let g:go_highlight_types = 1

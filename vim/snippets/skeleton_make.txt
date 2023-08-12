@@ -1,0 +1,38 @@
+.PHONY: build run
+
+file = <CHANGE_THIS>
+
+############ Python ############
+# cached_dir = $(wildcard *_cache)
+# test_file = $(wildcard test_*.py)
+
+clear:
+	clear
+
+test: clear
+	############ Python ############
+	# Fail on first error
+	# python3 -m pytest -x $(test_file)
+
+type_check: clear
+	########### Python ############
+	# $(info -------- mypy -------:)
+	# mypy $(file)
+
+lint: type_check
+	########### Python ############
+	# $(info -------- pylint -------:)
+	# pylint $(file)
+
+clean:
+	########### Python ############
+	# rm -rf $(cached_dir)
+	# rm -rf .mypy_cache
+
+build:
+	########### c #############
+	# cc -Wall -g $(file)
+
+run: build
+	########### c #############
+	#./$(file)
