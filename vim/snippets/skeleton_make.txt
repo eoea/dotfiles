@@ -1,38 +1,60 @@
-.PHONY: build run
+.PHONY: build clean run
 
 file = <CHANGE_THIS>
+out  = build/<CHANGE_THIS>.out  # For C/C++ binary
 
 ############ Python ############
 # cached_dir = $(wildcard *_cache)
 # test_file = $(wildcard test_*.py)
 
+
 clear:
 	clear
+
 
 test: clear
 	############ Python ############
 	# Fail on first error
 	# python3 -m pytest -x $(test_file)
 
+
 type_check: clear
 	########### Python ############
 	# $(info -------- mypy -------:)
 	# mypy $(file)
+
 
 lint: type_check
 	########### Python ############
 	# $(info -------- pylint -------:)
 	# pylint $(file)
 
+
 clean:
 	########### Python ############
-	# rm -rf $(cached_dir)
-	# rm -rf .mypy_cache
+	# @rm -rf $(cached_dir)
+	# @rm -rf .mypy_cache
+
+	########### c #################
+	# @rm -rf build/*a.out*
+
+	########### Java ##############
+	# @rm *.class
+
 
 build:
-	########### c #############
-	# cc -Wall -g $(file)
+	########### c #################
+	# @cc -Wall -Werror -Wextra -g -o $(out) $(file)
+
+	########### Java ##############
+	# @javac Main.java
+
 
 run: build
-	########### c #############
-	#./$(file)
+	########### c #################
+	#./$(out)
+
+	########### Java ##############
+	# @java Main
+	# @make clean
+
