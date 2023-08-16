@@ -79,6 +79,7 @@ Plug 'https://github.com/ConradIrwin/vim-bracketed-paste'
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/tek256/simple-dark'
 Plug 'https://github.com/wellle/context.vim'
+Plug 'https://github.com/rhysd/vim-clang-format'
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
