@@ -32,7 +32,7 @@ function usage() {
 # install these package from a text file based on the OS.
 # For MacOS, Homebrew is downloaded if it is not already installed.
 # For Linux, apt or dnf is used based on availability on the system.
-# Note: sudo is called with apt or dnf if present.
+# Note: sudo is called with apt or dnf if present. 
 #
 # Argument:
 #   None
@@ -79,13 +79,13 @@ function install_pkgs() {
   do
     if [[ "${kernel}" == "Linux" ]]; then
       if [[ -e "$(which sudo)" ]]; then
-        sudo "${pkg_mngr}" install "${package}"
+        sudo "${pkg_mngr}" install "${package}" -y
       else
         # Install without sudo for containers that don't have it.
-        "${pkg_mngr}" install "${package}"
+        "${pkg_mngr}" install "${package}" -y
       fi
     else
-      "${pkg_mngr}" install "${package}"
+      "${pkg_mngr}" install "${package}" -y
     fi
   done
 }
