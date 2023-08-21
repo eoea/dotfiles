@@ -122,13 +122,11 @@ function create_symlinks() {
       ln -sfv "${PWD}/bash/mac_os/profile" "${HOME}/.profile"
       ln -sfv "${PWD}/bash/mac_os/bashrc" "${HOME}/.bashrc"
       ln -sfv "${PWD}/tmux/mac_os/tmux.conf" "${HOME}/.tmux.conf"
-      source "${HOME}/.bashrc"
       ;;
     Linux)
       ln -sfv "${PWD}/bash/linux/bashrc" "${HOME}/.bashrc"
       ln -sfv "${PWD}/bash/linux/bash_aliases" "${HOME}/.bash_aliases"
       ln -sfv "${PWD}/tmux/linux/tmux.conf" "${HOME}/.tmux.conf"
-      source "${HOME}/.bash_aliases"
 
       if [[ ! -e "$(which dconf)" ]]; then
         echo "dconf for gnome-terminal not installed, skipping this" >&2
