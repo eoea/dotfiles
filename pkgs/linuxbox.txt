@@ -11,3 +11,4 @@ make
 python3-pip
 curl
 openjdk-19-jdk
+unzip
