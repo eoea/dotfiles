@@ -7,16 +7,13 @@ out  = build/<CHANGE_THIS>.out  # For C/C++ binary
 # cached_dir = $(wildcard *_cache)
 # test_file = $(wildcard test_*.py)
 
-
 clear:
 	clear
-
 
 test: clear
 	############ Python ############
 	# Fail on first error
 	# python3 -m pytest -x $(test_file)
-
 
 type_check: clear
 	########### Python ############
@@ -29,7 +26,6 @@ lint: type_check
 	# $(info -------- pylint -------:)
 	# pylint $(file)
 
-
 clean:
 	########### Python ############
 	# @rm -rf $(cached_dir)
@@ -41,18 +37,16 @@ clean:
 	########### Java ##############
 	# @rm *.class
 
-
 build:
 	########### c #################
-	# @cc -Wall -Werror -Wextra -g -o $(out) $(file)
+	# @cc -Wall -Werror -Wextra -Wpedantic -g -o $(out) $(file)
 
 	########### Java ##############
 	# @javac Main.java
 
-
 run: build
 	########### c #################
-	#./$(out)
+	#@./$(out)
 
 	########### Java ##############
 	# @java Main
