@@ -38,8 +38,8 @@ function usage() {
 #   None
 #
 # Return:
-#   (Naked return when neither apt nor dnf is found on the system.)
-#   (Naked return when neither Darwin nor Linux kernel name is detected.)
+#   (Return 1 when neither apt nor dnf is found on the system.)
+#   (Return 1 when neither Darwin nor Linux kernel name is detected.)
 #######################################
 function install_pkgs() {
   local pkg_mngr
@@ -65,13 +65,13 @@ function install_pkgs() {
       else
         echo "apt or dnf not detected" >&2
         echo "packages were not installed" >&2
-        return
+        return 1
       fi
       packages="$(cat "${PWD}/pkgs/linuxbox.txt")"
       ;;
     *)
       echo "unknown kernel, skipping package installation" >&2
-      return
+      return 1
       ;;
   esac
 
@@ -111,7 +111,7 @@ function create_directories() {
 #   None
 # 
 # Return: 
-#   (Naked return when neither Darwin nor Linux kernel name is detected.)
+#   (Return 1 when neither Darwin nor Linux kernel name is detected.)
 #######################################
 function create_symlinks() {
   local kernel
@@ -139,7 +139,7 @@ function create_symlinks() {
       ;;
     *)
       echo "unkown kernel, skipping symlink creation" >&2
-      return
+      return 1
       ;;
   esac
 
