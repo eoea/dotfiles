@@ -1,12 +1,15 @@
 bash-completion@2
+ctags
 dialog
 entr
 gh
 gnupg
+jq
 libffi
 llvm
 openjdk
 pandoc
+podman
 pybind11
 reattach-to-user-namespace
 shellcheck
@@ -14,4 +17,3 @@ tmux
 tree
 vim
 wget
-ctags
