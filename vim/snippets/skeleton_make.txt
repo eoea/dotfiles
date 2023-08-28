@@ -1,11 +1,11 @@
 .PHONY: build clean run
 
-file = <CHANGE_THIS>
-out  = build/<CHANGE_THIS>.out  # For C/C++ binary
+FILE = <CHANGE_THIS>
+OUT  = build/<CHANGE_THIS>.OUT  # For C/C++ binary
 
 ############ Python ############
 # cached_dir = $(wildcard *_cache)
-# test_file = $(wildcard test_*.py)
+# test_FILE = $(wildcard test_*.py)
 
 clear:
 	clear
@@ -13,18 +13,22 @@ clear:
 test: clear
 	############ Python ############
 	# Fail on first error
-	# python3 -m pytest -x $(test_file)
+	# python3 -m pytest -x $(test_FILE)
 
 type_check: clear
 	########### Python ############
 	# $(info -------- mypy -------:)
-	# mypy $(file)
-
+	# mypy $(FILE)
 
 lint: type_check
 	########### Python ############
 	# $(info -------- pylint -------:)
-	# pylint $(file)
+	# pylint $(FILE)
+
+	########### c #################
+	# This is experimental, remove the `type_check` to `lint`
+	# Hack: Care stderr goes to dev/null
+	# @clang-tidy -checks=-*,clang-analyzer-*,-clang-analyzer-cplusplus* -p build $(FILE) 2> /dev/null
 
 clean:
 	########### Python ############
@@ -32,21 +36,21 @@ clean:
 	# @rm -rf .mypy_cache
 
 	########### c #################
-	# @rm -rf build/*a.out*
+	# @rm -rf build/*a.OUT*
 
 	########### Java ##############
 	# @rm *.class
 
 build:
 	########### c #################
-	# @cc -Wall -Werror -Wextra -Wpedantic -g -o $(out) $(file)
+	# @cc -Wall -Werror -Wextra -Wpedantic -g -o $(OUT) $(FILE)
 
 	########### Java ##############
 	# @javac Main.java
 
 run: build
 	########### c #################
-	#@./$(out)
+	# @./$(OUT)
 
 	########### Java ##############
 	# @java Main
