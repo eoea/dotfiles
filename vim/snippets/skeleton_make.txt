@@ -15,18 +15,25 @@ test: clear
 	# Fail on first error
 	# python3 -m pytest -x $(test_FILE)
 
-type_check: clear
+type_check:
 	########### Python ############
 	# $(info -------- mypy -------:)
 	# mypy $(FILE)
 
-lint: type_check
+fmt:
+	########### Python ############
+	# @black $(FILE)
+
+	########### c #################
+	# @clang-format --style='Google' -i $(FILE)
+
+lint:
 	########### Python ############
 	# $(info -------- pylint -------:)
 	# pylint $(FILE)
 
 	########### c #################
-	# This is experimental, remove the `type_check` to `lint`
+	# This is experimental: 
 	# Hack: Care stderr goes to dev/null
 	# @clang-tidy -checks=-*,clang-analyzer-*,-clang-analyzer-cplusplus* -p build $(FILE) 2> /dev/null
 
