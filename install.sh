@@ -91,9 +91,7 @@ function install_pkgs() {
 }
 
 function create_directories() {
-  mkdir -pv "${HOME}/.local/bin"
-  mkdir -pv "${HOME}/.local/scripts"
-  mkdir -pv "${HOME}/.local/share"
+  mkdir -pv "${HOME}/.local/{bin,scripts,share}"
   mkdir -pv "${HOME}/.vim/plugged"
   mkdir -pv "${HOME}/Programming/Repos/github.com/eoea/"
   mkdir -pv "${HOME}/Programming/Repos/gitlab.com/eoea/"
