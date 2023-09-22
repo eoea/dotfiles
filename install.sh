@@ -5,7 +5,7 @@
 
 set -e
 
-function usage() {
+usage() {
   echo "${0} is a shell script that sets up my configuration files and "
   echo "directories and installs my essential packages on my new system." 
   echo 
@@ -41,7 +41,7 @@ function usage() {
 #   (Return 1 when neither apt nor dnf is found on the system.)
 #   (Return 1 when neither Darwin nor Linux kernel name is detected.)
 #######################################
-function install_pkgs() {
+install_pkgs() {
   local pkg_mngr
   local packages
   local kernel
@@ -90,7 +90,7 @@ function install_pkgs() {
   done
 }
 
-function create_directories() {
+create_directories() {
   mkdir -pv "${HOME}/.local/{bin,scripts,share}"
   mkdir -pv "${HOME}/.vim/plugged"
   mkdir -pv "${HOME}/Programming/Repos/github.com/eoea/"
@@ -111,7 +111,7 @@ function create_directories() {
 # Return: 
 #   (Return 1 when neither Darwin nor Linux kernel name is detected.)
 #######################################
-function create_symlinks() {
+create_symlinks() {
   local kernel
   kernel="$(uname -s)"
 
@@ -151,13 +151,13 @@ function create_symlinks() {
   ln -sfv "${PWD}/vim/snippets" "${HOME}/.vim/snippets"
 }
 
-function install_vim_plugin_mngr() {
+install_vim_plugin_mngr() {
   echo "installing vim-plug"
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
 
-function main() {
+main() {
   local exit_code=0
   while getopts "hls" flags; do 
     case "${flags}" in 
