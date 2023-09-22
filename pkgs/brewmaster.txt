@@ -17,3 +17,4 @@ tmux
 tree
 vim
 wget
+delve
