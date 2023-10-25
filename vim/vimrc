@@ -81,6 +81,7 @@ Plug 'https://github.com/tek256/simple-dark'
 Plug 'https://github.com/wellle/context.vim'
 Plug 'https://github.com/rhysd/vim-clang-format'
 Plug 'https://github.com/tpope/vim-commentary'
+Plug 'https://github.com/dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
@@ -104,6 +105,11 @@ nnoremap ,rust :-1read ~/.vim/snippets/skeleton_rs.txt<CR>
 nnoremap ,pylint :-1read ~/.vim/snippets/skeleton_pylint.txt<CR>
 nnoremap ,make :-1read ~/.vim/snippets/skeleton_make.txt<CR>
 nnoremap ,contact :-1read ~/.vim/snippets/skeleton_contact.txt<CR>
+
+" Ale Linter
+let g:ale_linters = {'python': ['mypy', 'pylint']}
+let g:ale_fixers = {'*': [], 'python': ['black']}
+let g:ale_fix_on_save = 1
 
 " Golang syntax highlighting
 let g:go_highlight_types = 1
