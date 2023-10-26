@@ -83,6 +83,7 @@ Plug 'https://github.com/rhysd/vim-clang-format'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 " For Simple-dark, focus mode
@@ -106,8 +107,8 @@ nnoremap ,make :-1read ~/.vim/snippets/skeleton_make.txt<CR>
 nnoremap ,contact :-1read ~/.vim/snippets/skeleton_contact.txt<CR>
 
 " Ale Linter
-let g:ale_linters = {'go': ['gopls'], 'python': ['mypy', 'pylint']}
-let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['black']}
+let g:ale_linters = {'go': ['gopls'], 'python': ['mypy', 'pylint'], 'c': ['clang']}
+let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['black'], 'c': ['clang-format']}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_linters_explicit = 1
