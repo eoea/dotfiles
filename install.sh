@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This program is a shell script to set up my configuration files and 
+# This program is a shell script to set up my configuration files and
 # directories and installs my essential packages on my new system.
 # Created by Emile O.E Antat (eoea)
 
@@ -7,8 +7,8 @@ set -e
 
 usage() {
   echo "${0} is a shell script that sets up my configuration files and "
-  echo "directories and installs my essential packages on my new system." 
-  echo 
+  echo "directories and installs my essential packages on my new system."
+  echo
   echo "Usage:"
   echo
   echo "        ${0} [flags]"
@@ -32,7 +32,7 @@ usage() {
 # install these package from a text file based on the OS.
 # For MacOS, Homebrew is downloaded if it is not already installed.
 # For Linux, apt or dnf is used based on availability on the system.
-# Note: sudo is called with apt or dnf if present. 
+# Note: sudo is called with apt or dnf if present.
 #
 # Argument:
 #   None
@@ -91,24 +91,24 @@ install_pkgs() {
 }
 
 create_directories() {
-  mkdir -pv "${HOME}/.local/{bin,scripts,share}"
+  mkdir -pv "${HOME}/.local/"{bin,scripts,share}
   mkdir -pv "${HOME}/.vim/plugged"
   mkdir -pv "${HOME}/Programming/Repos/github.com/eoea/"
   mkdir -pv "${HOME}/Programming/Repos/gitlab.com/eoea/"
 }
 
 ######################################
-# Creates symlinks of my rcfiles from my repo to the home directory. 
-# A kernel name check is performed because the symlinks for bashrc and 
-# tmux are different for MacOS and Linux. If the kernel name is Linux, 
-# then a further check is made to see if gnome-terminal is installed. 
-# If it is present, then the default config file for gnome-terminal is 
+# Creates symlinks of my rcfiles from my repo to the home directory.
+# A kernel name check is performed because the symlinks for bashrc and
+# tmux are different for MacOS and Linux. If the kernel name is Linux,
+# then a further check is made to see if gnome-terminal is installed.
+# If it is present, then the default config file for gnome-terminal is
 # replaced with mine; otherwise, this step is skipped.
-# 
-# Argument: 
+#
+# Argument:
 #   None
-# 
-# Return: 
+#
+# Return:
 #   (Return 1 when neither Darwin nor Linux kernel name is detected.)
 #######################################
 create_symlinks() {
@@ -159,9 +159,9 @@ install_vim_plugin_mngr() {
 
 main() {
   local exit_code=0
-  while getopts "hls" flags; do 
-    case "${flags}" in 
-      h) 
+  while getopts "hls" flags; do
+    case "${flags}" in
+      h)
         usage
         ;;
       s)
