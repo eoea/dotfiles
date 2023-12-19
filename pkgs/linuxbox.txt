@@ -13,3 +13,4 @@ curl
 openjdk-19-jdk
 unzip
 universal-ctags
+clang-format
