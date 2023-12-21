@@ -27,7 +27,7 @@ set nobackup
 set nowritebackup
 set viminfo='20,<1000,s1000
 set splitbelow splitright
-set mouse=a
+"set mouse=a "Disabled, now easier to copy and paste from vim opened inside a container while in tmux
 set undodir=~/.vim/undodir
 set confirm
 
