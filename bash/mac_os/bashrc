@@ -23,6 +23,7 @@ export PATH="/opt/homebrew/bin:${PATH}"
 
 # Bash-completion Homebrew
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+export PATH="/opt/homebrew/etc/bash_completion.d:${PATH}"
 
 # Golang path environment
 export PATH="${HOME}/.local/bin/go/bin:${PATH}"
