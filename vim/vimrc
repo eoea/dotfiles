@@ -78,6 +78,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/ConradIrwin/vim-bracketed-paste'
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/tek256/simple-dark'
+Plug 'https://github.com/morhetz/gruvbox'
 Plug 'https://github.com/wellle/context.vim'
 Plug 'https://github.com/rhysd/vim-clang-format'
 Plug 'https://github.com/tpope/vim-commentary'
@@ -87,8 +88,13 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 " For Simple-dark, focus mode
-colorscheme simple-dark-transparent
-set background=dark
+" colorscheme simple-dark-transparent
+" set background=dark
+
+" For Gruvbox
+let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
+hi Normal guibg=NONE ctermbg=NONE
 
 " Underlines spelling, and search has to be after colorscheme to work.
 hi keyword cterm=bold
