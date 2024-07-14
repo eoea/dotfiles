@@ -26,10 +26,10 @@ export PATH="/opt/homebrew/bin:${PATH}"
 export PATH="/opt/homebrew/etc/bash_completion.d:${PATH}"
 
 # Golang path environment
-export PATH="${HOME}/.local/bin/go/bin:${PATH}"
-export GOPATH="${HOME}/.local/go"
-export GOBIN="${HOME}/.local/go/bin"
-export PATH="${GOPATH}/bin:${PATH}"
+# export PATH="${HOME}/.local/bin/go/bin:${PATH}"
+# export GOPATH="${HOME}/.local/go"
+# export GOBIN="${HOME}/.local/go/bin"
+# export PATH="${GOPATH}/bin:${PATH}"
 
 # Protobuf path environment
 export PATH="${HOME}/.local/bin/protobuf/bin:${PATH}"
