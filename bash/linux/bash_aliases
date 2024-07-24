@@ -11,7 +11,7 @@ cat /dev/null > ~/.bash_history && history -c
 export REPO="${HOME}/Programming/Repos/github.com/eoea"
 export DOTS="${HOME}/Programming/Repos/github.com/eoea/dotfiles"
 export NOTES="${HOME}/Programming/Repos/gitlab.com/eoea/coding-notes"
-export GITLAB="${HOME}/Programming/Repos/gitlab.com/eoea/"
+export LAB="${HOME}/Programming/Repos/gitlab.com/eoea/"
 
 # Golang path environment
 export PATH="${HOME}/.local/bin/go/bin:${PATH}"

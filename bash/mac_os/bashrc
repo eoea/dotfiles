@@ -15,7 +15,7 @@ export PATH="${HOME}/.local/scripts:${PATH}"
 export REPO="${HOME}/Programming/Repos/github.com/eoea"
 export DOTS="${HOME}/Programming/Repos/github.com/eoea/dotfiles"
 export NOTES="${HOME}/Programming/Repos/gitlab.com/eoea/coding-notes"
-export GITLAB="${HOME}/Programming/Repos/gitlab.com/eoea/"
+export LAB="${HOME}/Programming/Repos/gitlab.com/eoea/"
 
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -27,8 +27,8 @@ export PATH="/opt/homebrew/etc/bash_completion.d:${PATH}"
 
 # Golang path environment
 # export PATH="${HOME}/.local/bin/go/bin:${PATH}"
-# export GOPATH="${HOME}/.local/go"
-# export GOBIN="${HOME}/.local/go/bin"
+export GOPATH="${HOME}/.local/go"
+#export GOBIN="${HOME}/.local/go/bin"
 # export PATH="${GOPATH}/bin:${PATH}"
 
 # Protobuf path environment
