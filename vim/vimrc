@@ -88,13 +88,13 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 " For Simple-dark, focus mode
-" colorscheme simple-dark-transparent
-" set background=dark
+colorscheme simple-dark-transparent
+set background=dark
 
 " For Gruvbox
-let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
-hi Normal guibg=NONE ctermbg=NONE
+"let g:gruvbox_contrast_dark='hard'
+"colorscheme gruvbox
+"hi Normal guibg=NONE ctermbg=NONE
 
 " Underlines spelling, and search has to be after colorscheme to work.
 hi keyword cterm=bold
