@@ -1,0 +1,2 @@
+[tool.poetry.scripts]
+<PROJECT_NAME> = "<PROJECT_NAME>.main:main"

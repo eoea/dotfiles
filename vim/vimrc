@@ -111,6 +111,7 @@ nnoremap ,rust :-1read ~/.vim/snippets/skeleton_rs.txt<CR>
 nnoremap ,pylint :-1read ~/.vim/snippets/skeleton_pylint.txt<CR>
 nnoremap ,make :-1read ~/.vim/snippets/skeleton_make.txt<CR>
 nnoremap ,contact :-1read ~/.vim/snippets/skeleton_contact.txt<CR>
+nnoremap ,poetry :-1read ~/.vim/snippets/skeleton_poetry.txt<CR>
 
 " Ale Linter
 let g:ale_linters = {'go': ['gopls'], 'python': ['mypy'], 'c': ['clang'], 'java':['javac']}
