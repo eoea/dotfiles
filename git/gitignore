@@ -55,7 +55,7 @@ Temporary Items
 *.pdb
 
 ### Python ###
-# Byte-compiled / optimized 
+# Byte-compiled / optimized
 __pycache__/
 *.py[cod]
 
@@ -163,3 +163,6 @@ fastlane/screenshots/**/*.png
 fastlane/test_output
 
 iOSInjectionProject/
+
+# Godot
+.godot/
