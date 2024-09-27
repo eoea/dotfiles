@@ -166,3 +166,5 @@ iOSInjectionProject/
 
 # Godot
 .godot/
+tmp/
+temp/
