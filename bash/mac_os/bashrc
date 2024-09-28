@@ -10,6 +10,7 @@ cat /dev/null > ~/.bash_history && history -c
 # My custom program path
 export PATH="${HOME}/.local/bin:${PATH}"
 export PATH="${HOME}/.local/scripts:${PATH}"
+export MYSCRIPTS="${HOME}/.local/scripts"
 
 # Repo Path Variables
 export REPO="${HOME}/Programming/Repos/github.com/eoea"
