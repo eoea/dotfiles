@@ -56,6 +56,9 @@ export CARGO_HOME="${HOME}/.cargo"
 export PATH="${HOME}/.cargo/bin:${PATH}"
 export PATH="${HOME}/.cargo/env:${PATH}"
 
+# Ruby path environment
+export PATH="/opt/homebrew/opt/ruby/bin:${PATH}"
+
 # FLAGS
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
