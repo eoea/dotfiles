@@ -85,6 +85,7 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " For Simple-dark, focus mode
