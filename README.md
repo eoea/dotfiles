@@ -1,5 +1,7 @@
 # DEPRECATED
 
+Migrated to: https://gitlab.com/eoea/dotfiles/
+
 # My dotfiles
 
 Program makes reference to relative file paths; do not move the shell script.
