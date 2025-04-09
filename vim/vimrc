@@ -1,110 +1,76 @@
-" Basics
-syntax on
+"Basics
 set nocompatible
-filetype plugin on " for file specific config
-filetype plugin indent on
-set encoding=utf-8
+syntax on
+filetype plugin on
 scriptencoding utf-8
-
-" Quality of life
-set path+=**
-set novisualbell
-set number relativenumber
-set textwidth=80
-set wildmenu
-set wildmode=longest:full,full
-set hlsearch
-set ruler
-set nostartofline
-set ignorecase
-set smartcase
-
-" Usability options
-set clipboard=
-set noerrorbells
-set nowrap
-set nobackup
-set nowritebackup
-set viminfo='20,<1000,s1000
-set splitbelow splitright
-"set mouse=a "Disabled, now easier to copy and paste from vim opened inside a container while in tmux
-set undodir=~/.vim/undodir
-set confirm
-
-" Indentation, general indentation. Please check file specific indentation in
-" ~/vim/ftplugin
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set smarttab
-set smartindent
 set autoindent
+set clipboard=
+set confirm
+set encoding=utf-8
+set expandtab "Tabs become spaces
+set hlsearch
+set ignorecase
+set incsearch
+set linebreak "Wraps lines at word boundary
+set nobackup
+set noerrorbells
+set nostartofline
+set novisualbell
+set nowrap
+set nowritebackup
+set number relativenumber
+set path+=**
+set ruler
+set showmode
+set smartcase
+set smartindent
+set textwidth=80
+set ttyfast
+set wildmenu
 
-" Auto parenthesis, brackets, braces
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
-
-" Custom Commands Clear Vim Registry
-command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
-
-" Tag jumping with ctags
-command! MakeTags !ctags -R .
-
-" Digraphs Overwrite Subscripts
-" for: (ₙ),(ᵢ),(ⱼ),(ₖ)
-execute "digraphs ns " . 0x2099
-execute "digraphs is " . 0x1D62
-execute "digraphs js " . 0x2C7C
-execute "digraphs ks " . 0x2096
-" Digraphs Overwrite Superscripts
-" for: (ⁿ),(ⁱ),(ʲ),(ᵏ)
-execute "digraphs nS " . 0x207f
-execute "digraphs iS " . 0x2071
-execute "digraphs jS " . 0x02b2
-execute "digraphs kS " . 0x1d4f
-
-" Vim Plug Minimalist Vim plugin Manager
-" Instructions
-" https://github.com/junegunn/vim-plug
-" Usage add in new plug <url> then save vimrc, then do :PlugInstall
-" Specify a directory for plugins like plugged, don't use name plugin
-" To delete the plugin, comment out the Plug below, then run :PlugClean
-" To update the plugin, run :PlugUpdate
+"Vim Plug Minimalist Vim plugin Manager
+"Instructions
+"https://github.com/junegunn/vim-plug
+"Usage add in new plug <url> then save vimrc, then do :PlugInstall
+"Specify a directory for plugins like plugged, don't use name plugin
+"To delete the plugin, comment out the Plug below, then run :PlugClean
+"To update the plugin, run :PlugUpdate
 call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/ConradIrwin/vim-bracketed-paste'
-Plug 'https://github.com/sheerun/vim-polyglot'
-Plug 'https://github.com/tek256/simple-dark'
-Plug 'https://github.com/morhetz/gruvbox'
 Plug 'https://github.com/wellle/context.vim'
-Plug 'https://github.com/rhysd/vim-clang-format'
 Plug 'https://github.com/tpope/vim-commentary'
-Plug 'https://github.com/dense-analysis/ale'
-Plug 'rust-lang/rust.vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'https://github.com/tpope/vim-sensible'
+Plug 'https://github.com/tpope/vim-tbone'
+Plug 'https://github.com/tek256/simple-dark'
 call plug#end()
 
-" For Simple-dark, focus mode
+"For Simple-Dark theme plugin
 colorscheme simple-dark-transparent
 set background=dark
 
-" For Gruvbox
-"let g:gruvbox_contrast_dark='hard'
-"colorscheme gruvbox
-"hi Normal guibg=NONE ctermbg=NONE
+"Netrw configuration
+let g:netrw_liststyle=3 "tree view
 
-" Underlines spelling, and search has to be after colorscheme to work.
-hi keyword cterm=bold
-hi SpellBad cterm=underline ctermfg=darkred
-hi Search ctermbg=black ctermfg=yellow
-au FileType markdown hi Title cterm=bold ctermfg=lightgrey
-autocmd BufWritePre *.py :%s/\s\+$//e "remove trailing whitespace in .py
+"Create the tags file
+command! MakeTags !ctags -R .
 
-" Snippets
+"Remove trailing whitespaces from files
+autocmd BufWritePre * :%s/\s\+$//e
+
+"Cursor Change when in Insert Mode and Normal Mode
+let &t_SI = "\<esc>[5 q" " blinking I-beam in insert mode
+let &t_SR = "\<esc>[3 q" " blinking underline in replace mode
+let &t_EI = "\<esc>[ q"  " default cursor (usually blinking block) otherwise
+
+"Auto parenthesis, brackets, braces, and quotes
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap '<CR> ''<ESC><left>
+inoremap "<CR> ""<ESC><left>
+inoremap <<CR> <><ESC><left>
+
+"Snippets
 nnoremap ,html :-1read ~/.vim/snippets/skeleton_html.txt<CR>
 nnoremap ,python :-1read ~/.vim/snippets/skeleton_py.txt<CR>
 nnoremap ,java :-1read ~/.vim/snippets/skeleton_java.txt<CR>
@@ -114,19 +80,12 @@ nnoremap ,make :-1read ~/.vim/snippets/skeleton_make.txt<CR>
 nnoremap ,contact :-1read ~/.vim/snippets/skeleton_contact.txt<CR>
 nnoremap ,poetry :-1read ~/.vim/snippets/skeleton_poetry.txt<CR>
 
-" Ale Linter
-let g:ale_linters = {'go': ['gopls'], 'python': ['mypy'], 'c': ['clang'], 'java':['javac'], 'ruby':['rubocop']}
-let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['black'], 'c': ['clang-format'], 'java': ['google_java_format']}
-let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
-let g:ale_linters_explicit = 1
-let g:ale_virtualtext_cursor = 'current'
-let g:ale_sign_column_always = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_completion_autoimport = 0
-let g:ale_ruby_rubocop_auto_correct_all = 1
-highlight ALEWarning ctermfg=yellow
-highlight ALEErrorSign ctermfg=red
-
-" Rust stuff
-let g:rustfmt_autosave = 1
+"Toggles Visibility of Line Numbers
+nnoremap ,li :call ToggleLineNumbers()<CR>
+function! ToggleLineNumbers()
+    if &number || &relativenumber
+        setlocal nonumber norelativenumber
+    else
+        setlocal number relativenumber
+    endif
+endfunction
