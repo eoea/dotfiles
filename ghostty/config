@@ -1,0 +1,26 @@
+# General
+shell-integration = bash
+shell-integration-features = no-cursor, no-sudo, no-title
+link-url = true
+
+# Mouse and Cursor
+cursor-style = block 
+cursor-invert-fg-bg = true
+cursor-style-blink = true
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 2
+
+# Display 
+window-colorspace = "display-p3"
+window-padding-balance = true
+window-save-state = always
+window-width = 110
+window-height = 30
+macos-titlebar-style = transparent
+macos-titlebar-proxy-icon = hidden
+title = " "
+
+# Cosmetic
+theme = "3024 Night"
+font-size = 16
+font-feature = "-calt"
