@@ -85,7 +85,7 @@ install_pkgs() {
         "${pkg_mngr}" install "${package}" -y
       fi
     else
-      "${pkg_mngr}" install "${package}" -y
+      "${pkg_mngr}" install "${package}"
     fi
   done
 }
@@ -95,6 +95,7 @@ create_directories() {
   mkdir -pv "${HOME}/.vim/plugged"
   mkdir -pv "${HOME}/Programming/Repos/github.com/eoea/"
   mkdir -pv "${HOME}/Programming/Repos/gitlab.com/eoea/"
+  mkdir -pv "${HOME}/.config/ghostty/"
 }
 
 ######################################
@@ -145,10 +146,10 @@ create_symlinks() {
   ln -sfv "${PWD}/git/gitconfig" "${HOME}/.gitconfig"
   ln -sfv "${PWD}/git/gitignore" "${HOME}/.gitignore"
   ln -sfv "${PWD}/sqlite/sqliterc" "${HOME}/.sqliterc"
-  ln -sfv "${PWD}/cobra/cobra.yaml" "${HOME}/.cobra.yaml"
   ln -sfv "${PWD}/vim/ftplugin" "${HOME}/.vim/ftplugin"
   ln -sfv "${PWD}/vim/spell" "${HOME}/.vim/spell"
   ln -sfv "${PWD}/vim/snippets" "${HOME}/.vim/snippets"
+  ln -sfv "${PWD}/ghostty/config"  "${HOME}/.config/ghostty/config"
 }
 
 install_vim_plugin_mngr() {
