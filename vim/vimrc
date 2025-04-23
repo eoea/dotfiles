@@ -28,6 +28,12 @@ set textwidth=80
 set ttyfast
 set wildmenu
 
+" Set spacing and format in all files by default:
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set smarttab
+
 "Vim Plug Minimalist Vim plugin Manager
 "Instructions
 "https://github.com/junegunn/vim-plug
