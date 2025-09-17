@@ -102,6 +102,9 @@ endfunction
 "" Ctrl-p to open fzf:
 nnoremap <C-p> :Files<Cr>
 
+"" Ctrl-x to remove highlight:
+nnoremap <C-x> :noh<cr>
+
 "" Remap vim yank to system clipboard
 nnoremap y "+y
 vnoremap y "+y
