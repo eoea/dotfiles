@@ -105,6 +105,10 @@ nnoremap <C-p> :Files<Cr>
 "" Ctrl-x to remove highlight:
 nnoremap <C-x> :noh<cr>
 
+"" Ctrl-k to comment code:
+nnoremap <C-k> :Commentary<CR>
+vnoremap <C-k> :Commentary<CR>
+
 "" Remap vim yank to system clipboard
 nnoremap y "+y
 vnoremap y "+y
