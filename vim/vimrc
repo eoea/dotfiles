@@ -48,6 +48,8 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/tpope/vim-sensible'
 Plug 'https://github.com/tpope/vim-tbone'
 Plug 'https://github.com/tek256/simple-dark'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 "For Simple-Dark theme plugin
@@ -95,3 +97,12 @@ function! ToggleLineNumbers()
         setlocal number relativenumber
     endif
 endfunction
+
+"Other Hotkeys
+"" Ctrl-p to open fzf:
+nnoremap <C-p> :Files<Cr>
+
+"" Remap vim yank to system clipboard
+nnoremap y "+y
+vnoremap y "+y
+nnoremap yy "+yy
