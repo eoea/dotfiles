@@ -56,6 +56,9 @@ call plug#end()
 colorscheme simple-dark-transparent
 set background=dark
 
+"Keyword Highlights
+au BufWinEnter * let w:m1=matchadd('Todo', '@TODO\|@DBUGR\|@BUG\|@REVIEW\|@NOTE\|@REFACTOR\|@REFACT\|@FEATURE\|@FEAT\|@FOLLOWUP', -1)
+
 "Netrw configuration
 let g:netrw_liststyle=3 "tree view
 
@@ -108,6 +111,9 @@ nnoremap <C-x> :noh<cr>
 "" Ctrl-k to comment code:
 nnoremap <C-k> :Commentary<CR>
 vnoremap <C-k> :Commentary<CR>
+
+"" Ctrl-s to save code:
+nnoremap <C-s> :w<CR>
 
 "" Remap vim yank to system clipboard
 nnoremap y "+y
